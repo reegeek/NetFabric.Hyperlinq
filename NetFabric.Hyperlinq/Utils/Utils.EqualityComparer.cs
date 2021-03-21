@@ -7,7 +7,7 @@ namespace NetFabric.Hyperlinq
     {
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool IsValueType<T>()
-            => default(T) is object;
+            => default(T) is not null;
 
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
         public static bool UseDefault<T>(IEqualityComparer<T>? comparer)

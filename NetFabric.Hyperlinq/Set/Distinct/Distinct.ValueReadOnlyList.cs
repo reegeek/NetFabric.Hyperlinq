@@ -106,16 +106,8 @@ namespace NetFabric.Hyperlinq
             }
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public DistinctEnumerable<TList, TSource> Skip(int count)
-            {
-                var (skipCount, takeCount) = Utils.Skip(this.count, count);
-                return new DistinctEnumerable<TList, TSource>(source, comparer, offset + skipCount, takeCount);
-            }
-            
-            [MethodImpl(MethodImplOptions.AggressiveInlining)]
-            public DistinctEnumerable<TList, TSource> Take(int count)
-                => new(source, comparer, offset, Utils.Take(this.count, count));
-
+            public readonly DistinctEnumerable<TList, TSource> AsValueEnumerable()
+                => this;
             
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public readonly int Count()

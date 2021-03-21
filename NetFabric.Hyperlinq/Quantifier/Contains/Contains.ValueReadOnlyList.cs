@@ -24,8 +24,7 @@ namespace NetFabric.Hyperlinq
                 if (offset is 0 && count == source.Count && source is ICollection<TSource> collection)
                     return collection.Contains(value);
 
-                if (Utils.IsValueType<TSource>())
-                    return DefaultContains(source, value, offset, count);
+                return DefaultContains(source, value, offset, count);
             }
 
             return ComparerContains(source, value, comparer, offset, count);

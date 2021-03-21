@@ -188,13 +188,13 @@ namespace NetFabric.Hyperlinq
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public ValueEnumerable<TList, TSource> Skip(int count)
             {
-                var (skipCount, takeCount) = Utils.Skip(Count, count);
+                var (skipCount, takeCount) = Partition.Skip(Count, count);
                 return new ValueEnumerable<TList, TSource>(source, offset + skipCount, takeCount);
             }
 
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public ValueEnumerable<TList, TSource> Take(int count)
-                => new(source, offset, Utils.Take(Count, count));
+                => new(source, offset, Partition.Take(Count, count));
 
             #endregion
         }

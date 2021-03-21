@@ -217,13 +217,13 @@ namespace NetFabric.Hyperlinq
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public SelectAtEnumerable<TList, TSource, TResult, TSelector> Skip(int count)
             {
-                var (skipCount, takeCount) = Utils.Skip(Count, count);
+                var (skipCount, takeCount) = Partition.Skip(Count, count);
                 return new SelectAtEnumerable<TList, TSource, TResult, TSelector>(source, selector, offset + skipCount, takeCount);
             }
             
             [MethodImpl(MethodImplOptions.AggressiveInlining)]
             public SelectAtEnumerable<TList, TSource, TResult, TSelector> Take(int count)
-                => new(source, selector, offset, Utils.Take(Count, count));
+                => new(source, selector, offset, Partition.Take(Count, count));
             
             #endregion
             #region Aggregation
